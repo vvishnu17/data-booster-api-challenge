@@ -1,5 +1,5 @@
 const API_URL = 'https://flag-gilt.vercel.app/api/challenge';
-const BEARER_TOKEN = 'uM0M7uypyeeHZ741XIrs9KsFOUEhxUdtXJA=';
+const BEARER_TOKEN = '_removed_for_security_reasons_';
 
 async function fetchFlag() {
   let cursor = null;
@@ -7,7 +7,7 @@ async function fetchFlag() {
 
   while (!flagFound) {
     try {
-      // Construct the body based on the presence of cursor
+      // Construct the body params based on the presence of cursor
       const body = cursor ? JSON.stringify({ cursor }) : '{}';
 
       const response = await fetch(API_URL, {
@@ -27,7 +27,8 @@ async function fetchFlag() {
         console.log('Flag found:', data.flag);
         flagFound = true;
       } else if (data.nextCursor) {
-        cursor = data.nextCursor; // Update cursor to continue the challenge
+        // Update the cursor
+        cursor = data.nextCursor; 
       } else {
         console.log('No further cursor provided.');
         break;
